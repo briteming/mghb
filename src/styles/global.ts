@@ -1,12 +1,40 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-
     * {
         padding: 0;
         margin: 0;
         box-sizing: border-box;
     }
+
+    :focus {
+        outline: none;
+    
+    }
+
+    body, textarea, input, button {
+        font-family: 'Nunito', sans-serif;
+        font-weight: 400;
+        font-size: 1rem;
+
+        border: 0;
+    }
+
+    body {
+        background: ${props => props.theme['base-background']};
+        color: ${props => props.theme['base-text']};
+
+    }
+    
+
+    button {
+        cursor: pointer;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
 
     @media (max-width: 1440px) {
         html {
@@ -19,4 +47,15 @@ export const GlobalStyle = createGlobalStyle`
             font-size: 87.5%;
         }
     }
+`;
+
+export const BaseContainer = styled.main`
+	width: 100%;
+	max-width: 864px;
+
+	margin: 0 auto;
+
+	@media (max-width: 768px) {
+		max-width: 300px;
+	}
 `;

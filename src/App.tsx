@@ -1,6 +1,9 @@
 import { GlobalStyle } from './styles/global';
 import { ThemeProvider } from 'styled-components';
 import { defaultTheme } from './styles/themes/default';
+import { Router } from './routes';
+import { BrowserRouter } from 'react-router-dom';
+import { Browser } from 'phosphor-react';
 
 // ver como fazer roteamento com parametros (ler sobre hook useparams)
 
@@ -11,7 +14,10 @@ import { defaultTheme } from './styles/themes/default';
 export function App() {
 	return (
 		<ThemeProvider theme={defaultTheme}>
-			<GlobalStyle />;
+			<BrowserRouter>
+				<Router />
+			</BrowserRouter>
+			<GlobalStyle />
 		</ThemeProvider>
 	);
 }
