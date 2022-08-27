@@ -66,9 +66,9 @@ export const IssueCardContent = styled.div`
 		align-items: center;
 		gap: 2rem;
 
-		margin-top: 0.5rem;
+		margin-top: 0.75rem;
 
-		div {
+		a {
 			display: flex;
 			align-items: center;
 			gap: 0.5rem;
@@ -77,6 +77,22 @@ export const IssueCardContent = styled.div`
 
 			svg {
 				color: ${props => props.theme['base-label']};
+			}
+		}
+	}
+
+	@media (max-width: 768px) {
+		h1 {
+			font-size: 1rem;
+		}
+
+		footer {
+			gap: 1rem;
+
+			a {
+				gap: 0.3rem;
+
+				font-size: 0.65rem;
 			}
 		}
 	}

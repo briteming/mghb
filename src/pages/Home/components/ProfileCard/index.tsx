@@ -1,51 +1,77 @@
 import { ArrowSquareOut, Buildings, GithubLogo, Users } from 'phosphor-react';
+import { memo, useEffect, useState } from 'react';
 import {
 	ProfileCardContainer,
 	ProfileCardContent,
 	ProfileCardInfo,
 } from './styles';
+import { api } from '../../../../api';
 
-export function ProfileCard() {
+interface IUser {
+	login: string;
+	name: string;
+	bio: string;
+	company: string;
+	followers: number;
+	avatar_url: string;
+	html_url: string;
+}
+function ProfileCardComponent() {
+	const [user, setUser] = useState({} as IUser);
+
+	useEffect(() => {
+		async function fetchUser() {
+			const response = await api.get<IUser>('/users/Maymisk');
+			const fetchedUser = response.data;
+
+			setUser(fetchedUser);
+		}
+
+		fetchUser();
+	}, []);
+
 	return (
 		<ProfileCardContainer>
 			<img
-				src="https://github.com/Maymisk.png"
-				alt="Maymisk profile picture"
+				src={user.avatar_url}
+				alt={`${user.login}'s profile picture`}
 			/>
 
 			<ProfileCardContent>
-				<header>
-					<h1>Khalil Bohner</h1>
+				<div>
+					<header>
+						<h1>{user.name}</h1>
 
-					<a href="">
-						<span>github</span>
-						<ArrowSquareOut size={18} />
-					</a>
-				</header>
+						<a href={user.html_url} target="_blank">
+							<span>github</span>
+							<ArrowSquareOut size={18} />
+						</a>
+					</header>
 
-				<p>
-					Tristique volutpat pulvinar vel massa, pellentesque egestas.
-					Eu viverra massa quam dignissim aenean malesuada suscipit.
-					Nunc, volutpat pulvinar vel mass.
-				</p>
+					<p>{user.bio}</p>
+				</div>
 
 				<ProfileCardInfo>
-					<a href="">
+					<a href={user.html_url} target="_blank">
 						<GithubLogo size={18} />
-						<span>Maymisk</span>
+						<span>{user.login}</span>
 					</a>
 
-					<a href="">
+					<a href={user.html_url} target="_blank">
 						<Buildings size={18} />
-						<span>Desempregado 😭</span>
+						<span>
+							{user.company ? user.company : 'Sem empresa'}
+						</span>
 					</a>
 
-					<a href="">
+					<a href={user.html_url} target="_blank">
 						<Users size={18} />
-						<span>32 Seguidores</span>
+						<span>{user.followers} Seguidores</span>
 					</a>
 				</ProfileCardInfo>
 			</ProfileCardContent>
 		</ProfileCardContainer>
 	);
 }
+
+export const ProfileCard = memo(ProfileCardComponent);

@@ -8,9 +8,8 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     :focus {
-        outline: none;
-    
-    }
+		outline: 1px solid ${props => props.theme.blue};
+	}
 
     body, textarea, input, button {
         font-family: 'Nunito', sans-serif;
@@ -33,6 +32,10 @@ export const GlobalStyle = createGlobalStyle`
 
     a {
         text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
 

@@ -1,23 +1,37 @@
+import { NavLink } from 'react-router-dom';
 import {
+	FooterFade,
 	IssueLinkContainer,
 	IssueLinkHeader,
 	IssueLinkSnippet,
 } from './styles';
 
-export function IssueLink() {
+interface IIssueLinkProps {
+	title: string;
+	body?: string;
+	number: number;
+	created_at: string;
+}
+
+export function IssueLink({
+	title,
+	number,
+	body,
+	created_at,
+}: IIssueLinkProps) {
 	return (
 		<IssueLinkContainer>
 			<IssueLinkHeader>
-				<a>JavaScript data types and data structures</a>
+				<NavLink to={'/issue/' + number}>{title}</NavLink>
 
-				<time>Há 1 dia</time>
+				<time>{created_at}</time>
 			</IssueLinkHeader>
 
 			<IssueLinkSnippet>
-				Programming languages all have built-in data structures, but
-				these often differ from one language to another. This article
-				attempts to list the built-in data structures available in
+				{body ? body + '...' : 'Sem texto...'}
 			</IssueLinkSnippet>
+
+			<FooterFade />
 		</IssueLinkContainer>
 	);
 }

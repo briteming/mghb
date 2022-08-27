@@ -39,8 +39,4 @@ export const FormInput = styled.input`
 	::placeholder {
 		color: ${props => props.theme['base-label']};
 	}
-
-	:focus {
-		border: 1px solid ${props => props.theme.blue};
-	}
 `;

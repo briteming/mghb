@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const ProfileCardContainer = styled.div`
+	height: 212px;
+
 	position: relative;
 	z-index: 10;
 
@@ -17,7 +19,7 @@ export const ProfileCardContainer = styled.div`
 	margin-top: -5.5rem;
 
 	img {
-		max-height: 11.5rem;
+		max-height: 100%;
 
 		border-radius: 8px;
 
@@ -25,6 +27,8 @@ export const ProfileCardContainer = styled.div`
 	}
 
 	@media (max-width: 768px) {
+		height: auto;
+
 		flex-direction: column;
 		gap: 0.75rem;
 
@@ -33,14 +37,23 @@ export const ProfileCardContainer = styled.div`
 		padding: 1.2rem 1rem;
 
 		img {
-			max-height: 5rem;
+			max-width: 100px;
 
 			margin: 0;
+
+			overflow: hidden;
 		}
 	}
 `;
 
 export const ProfileCardContent = styled.div`
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
 	header {
 		display: flex;
 		align-items: center;
@@ -73,9 +86,9 @@ export const ProfileCardContent = styled.div`
 	}
 
 	p {
-		margin-top: 0.5rem;
-
 		color: ${props => props.theme['base-text']};
+
+		margin-top: 0.5rem;
 	}
 
 	@media (max-width: 768px) {
@@ -111,8 +124,6 @@ export const ProfileCardInfo = styled.div`
 	align-items: center;
 	gap: 1.5rem;
 
-	margin-top: 1.5rem;
-
 	a {
 		display: flex;
 		align-items: center;
@@ -126,13 +137,13 @@ export const ProfileCardInfo = styled.div`
 	}
 
 	@media (max-width: 768px) {
-		flex-direction: column;
+		justify-content: center;
 		gap: 0.75rem;
 
 		margin-top: 0.75rem;
 
 		a {
-			font-size: 0.75rem;
+			font-size: 0.65rem;
 		}
 	}
 `;
