@@ -1,21 +1,6 @@
 import { useEffect } from 'react';
-import { useForm, useFormContext } from 'react-hook-form';
-import { api } from '../../../../api';
-import { DateFormatter } from '../../../../utils/formatter';
-import { IssueLinkSnippet } from '../IssueLink/styles';
+import { useForm } from 'react-hook-form';
 import { FormContainer, FormHeader, FormInput } from './styles';
-
-interface IRepoIssue {
-	id: string;
-	title: string;
-	number: number;
-	body?: string;
-	created_at: string;
-}
-
-interface IResponse {
-	items: IRepoIssue[];
-}
 
 interface ISearchIssuesFormProps {
 	amountOfIssues: number;
